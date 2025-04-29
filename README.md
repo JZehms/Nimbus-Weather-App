@@ -9,7 +9,7 @@ Nimbus Weather App is a React-based application that allows users to search for 
 
 - 📍 Display of current temperature, weather condition, and icon 
 
-- 📆 7-day weather forecast with temperature and condition details 
+- 📆 5-day weather forecast with temperature and condition details 
 
 - ⚡ Real-time data fetched from a weather API 
 

@@ -13,7 +13,7 @@ Nimbus Weather App is a React-based application that allows users to search for 
 
 - ⚡ Real-time data fetched from a weather API 
 
-- 💡 Clean, responsive design built with modern CSS 
+- 💡 Clean, responsive design built with modern CSS
 
  
 🛠️ Tech Stack 
@@ -24,6 +24,8 @@ Nimbus Weather App is a React-based application that allows users to search for 
 
 - JavaScript (ES6+) – App logic and API interaction 
 
-- Weather API – For retrieving real-time weather data 
+- OpenWeather API – For retrieving real-time weather data
+
+- Rapid API - For Geolocation 
 
 - GitHub Pages (TBD) – Deployment and hosting 

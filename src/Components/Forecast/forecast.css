@@ -21,7 +21,6 @@
   flex: 1 1;
   margin: 0 0.5rem 0 0;
   font-size: 1rem;
-  cursor: text;
   color: #212121;
 }
 
@@ -80,6 +79,6 @@
   .daily-item:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 8px 32px 0 rgb(0 0 0 / 28%);
-    cursor: auto;
+    cursor: pointer;
   }
 }

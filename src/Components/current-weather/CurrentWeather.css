@@ -4,8 +4,9 @@
   box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
   color: #fff;
   background-color: #333;
-  margin: 20px auto 0 auto;
-  padding: 0 20px 20px 20px;
+  margin: 1rem auto;
+  padding: 0 1rem 1.25rem 1rem;
+  box-sizing: border-box;
 }
 
 .details {
@@ -62,4 +63,10 @@
   line-height: 1;
   width: auto;
   margin: 15px 0;
+}
+
+@media (min-width: 768px) {
+  .current-weather {
+    margin: 1.25rem auto 0 auto;
+  }
 }

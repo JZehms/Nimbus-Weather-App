@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Nimbus-Weather-App/static/css/main.b2bec691.css",
+    "main.js": "/Nimbus-Weather-App/static/js/main.88feb8a4.js",
+    "static/js/453.171cacb9.chunk.js": "/Nimbus-Weather-App/static/js/453.171cacb9.chunk.js",
+    "index.html": "/Nimbus-Weather-App/index.html",
+    "main.b2bec691.css.map": "/Nimbus-Weather-App/static/css/main.b2bec691.css.map",
+    "main.88feb8a4.js.map": "/Nimbus-Weather-App/static/js/main.88feb8a4.js.map",
+    "453.171cacb9.chunk.js.map": "/Nimbus-Weather-App/static/js/453.171cacb9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b2bec691.css",
+    "static/js/main.88feb8a4.js"
+  ]
+}

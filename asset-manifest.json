@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Nimbus-Weather-App/static/css/main.b2bec691.css",
-    "main.js": "/Nimbus-Weather-App/static/js/main.88feb8a4.js",
-    "static/js/453.171cacb9.chunk.js": "/Nimbus-Weather-App/static/js/453.171cacb9.chunk.js",
-    "index.html": "/Nimbus-Weather-App/index.html",
-    "main.b2bec691.css.map": "/Nimbus-Weather-App/static/css/main.b2bec691.css.map",
-    "main.88feb8a4.js.map": "/Nimbus-Weather-App/static/js/main.88feb8a4.js.map",
-    "453.171cacb9.chunk.js.map": "/Nimbus-Weather-App/static/js/453.171cacb9.chunk.js.map"
+    "main.css": "/Nimbus-Weather/static/css/main.b2bec691.css",
+    "main.js": "/Nimbus-Weather/static/js/main.fcd221d7.js",
+    "static/js/453.171cacb9.chunk.js": "/Nimbus-Weather/static/js/453.171cacb9.chunk.js",
+    "index.html": "/Nimbus-Weather/index.html",
+    "main.b2bec691.css.map": "/Nimbus-Weather/static/css/main.b2bec691.css.map",
+    "main.fcd221d7.js.map": "/Nimbus-Weather/static/js/main.fcd221d7.js.map",
+    "453.171cacb9.chunk.js.map": "/Nimbus-Weather/static/js/453.171cacb9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b2bec691.css",
-    "static/js/main.88feb8a4.js"
+    "static/js/main.fcd221d7.js"
   ]
 }

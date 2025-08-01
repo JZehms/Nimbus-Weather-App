@@ -28,4 +28,8 @@ Nimbus Weather App is a React-based application that allows users to search for 
 
 - Rapid API - For Geolocation 
 
-- GitHub Pages (TBD) – Deployment and hosting 
+- GitHub Pages – Deployment and hosting 
+
+💡 Future Plans
+
+- Create a separate backend with Node.js with Express that will fetch the API data

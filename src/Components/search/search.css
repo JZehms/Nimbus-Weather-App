@@ -1,3 +1,5 @@
 .searchbar-container {
-  margin: 2rem 0.5rem;
+  display: flex;
+  justify-content: center;
+
 }

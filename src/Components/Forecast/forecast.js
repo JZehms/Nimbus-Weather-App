@@ -29,7 +29,7 @@ const Forecast = ({ data }) => {
       <h2 className="title">Daily Forecast</h2>
       <Accordion allowZeroExpanded>
         <div className="forecast-grid">
-          {data.list.slice(0, 10).map((item, idx) => (
+          {data.list.slice(0, 10).map((item, idx) =>  (
             <AccordionItem key={item.dt}>
               <AccordionItemHeading>
                 <AccordionItemButton>

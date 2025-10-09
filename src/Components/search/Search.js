@@ -17,11 +17,69 @@ const Search = ({ onSearchChange }) => {
     onSearchChange(searchData);
   };
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: "#f2f2f2",
+      borderRadius: "8px",
+      minHeight: "48px",
+      border: state.isFocused ? "1px solid #007BFF" : "none",
+      boxShadow: state.isFocused ? "0 0 0 1px #007BFF" : "none",
+      "&:hover": {
+        borderColor: "#a0a0a0",
+      },
+    }),
+
+    placeholder: (provided) => ({
+      ...provided,
+      color: "black",
+      fontSize: "18px",
+    }),
+
+    input: (provided) => ({
+      ...provided,
+      color: "black",
+    }),
+
+    menu: (provided) => ({
+      ...provided,
+      color: "black",
+      borderRadius: "8px",
+      marginTop: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      zIndex: 99,
+    }),
+
+    option: (provided, state) => {
+      let backgroundColor;
+      if (state.isSelected) {
+        backgroundColor = "#007BFF";
+      } else if (state.isFocused) {
+        backgroundColor = "#e6f7ff";
+      } else {
+        backgroundColor = null;
+      }
+      return {
+        ...provided,
+        backgroundColor,
+        color: state.isSelected ? "white" : "black",
+        padding: "12px 20px",
+        cursor: "pointer",
+      };
+    },
+
+    indicatorSeparator: (provided) => ({
+      ...provided,
+      display: "none",
+    }),
+  };
+
   return (
-<div className="searchbar-container">
+    <div className="searchbar-container">
       <AsyncPaginate
-        className="searchbar"
-        placeholder="Search for city"
+        styles={customStyles}
+        classNamePrefix="searchbar"
+        placeholder="Search City"
         debounceTimeout={600}
         value={search}
         onChange={handleOnChange}

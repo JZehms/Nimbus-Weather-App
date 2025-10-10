@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { fetchCityOptions } from "../../APIs/SearchAPI.js";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch} from "react-icons/fa";
 import { components } from "react-select";
 import PropTypes from "prop-types";
 import "./search.css";
 
 const CustomDropdownIndicator = (props) => {
+  const iconColor = props.isFocused ? "#ffffff" : "rgba(255, 255, 255, 0.9)";
   return (
     <components.DropdownIndicator {...props}>
       <FaSearch
         style={{ marginRight: "6px" }}
         size={18}
-        color={props.isFocused ? "#005a9e" : "#444"}
+        color={iconColor}
       />
     </components.DropdownIndicator>
   );
@@ -38,45 +39,77 @@ const Search = ({ onSearchChange }) => {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: "#ffffff",
-      borderRadius: "8px",
-      minHeight: "48px",
-      border: state.isFocused ? "2px solid #005a9e" : "1.5px solid #757575",
-      boxShadow: state.isFocused ? "0 0 0 3px rgba(0, 90, 158, 0.3)" : "none",
-      transition: "all 0.2s ease",
-      outline: "none",
-      "&:hover": {
-        borderColor: "#005a9e",
-      },
-
       width: "100%",
-      maxWidth: "500px",
-      minWidth: "200px",
+      maxWidth: "none",
+      minWidth: "auto",
+
+      backgroundColor: "transparent",
+
+      border: "1px solid rgba(255, 255, 255, 0.4)",
+
+      boxShadow: state.isFocused
+        ? "0 0 0 2px rgba(255, 255, 255, 0.6)"
+        : "none",
+
+      minHeight: "60px",
+      borderRadius: "16px",
+      transition: "all 0.3s ease",
       cursor: "text",
+      "&:hover": {
+        border: "1px solid rgba(255, 255, 255, 0.7)",
+      },
+    }),
+
+    valueContainer: (provided, state) => ({
+      ...provided,
+      padding: "0 25px 0 35px",
+      height: "100%",
+      alignItems: "center",
+      backgroundColor: state.isFocused
+        ? "rgba(255, 255, 255, 0.1)"
+        : "transparent",
+      borderRadius: "16px",
+      transition: "background-color 0.3s ease",
     }),
 
     placeholder: (provided) => ({
       ...provided,
-      color: "#444",
-      fontSize: "16px",
+      color: "rgba(255, 255, 255, 0.9)",
+      fontSize: "18px",
+      fontWeight: "400",
+      margin: 0,
     }),
 
     input: (provided) => ({
       ...provided,
-      color: "#1a1a1a",
+      color: "#ffffff",
+      fontSize: "18px",
+      margin: 0,
     }),
 
     singleValue: (provided) => ({
       ...provided,
-      color: "#1a1a1a",
+      color: "#ffffff",
+      fontSize: "22px",
     }),
+
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      padding: "0 20px 0 0",
+      color: state.isFocused ? "#ffffff" : "rgba(255, 255, 255, 0.9)",
+      "&:hover": {
+        color: "#ffffff",
+      },
+    }),
+
+    indicatorSeparator: () => ({ display: "none" }),
 
     menu: (provided) => ({
       ...provided,
       backgroundColor: "#ffffff",
       border: "1px solid #d0d0d0",
       borderRadius: "8px",
-      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
       marginTop: "8px",
       zIndex: 99,
     }),
@@ -97,32 +130,20 @@ const Search = ({ onSearchChange }) => {
         ...provided,
         backgroundColor,
         color,
-        padding: "12px 18px",
+        padding: "14px 20px",
         cursor: "pointer",
-        fontSize: "15px",
+        fontSize: "16px",
         transition: "background 0.1s ease",
       };
     },
-
-    indicatorSeparator: () => ({
-      display: "none",
-    }),
-
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      color: state.isFocused ? "#005a9e" : "#444",
-      "&:hover": {
-        color: "#005a9e",
-      },
-    }),
   };
 
   return (
-    <div className="searchbar-container">
+    <div className="searchbar-component-wrapper">
       <AsyncPaginate
         styles={customStyles}
         classNamePrefix="searchbar"
-        placeholder="Search City"
+        placeholder="Search City for Nimbus Weather"
         debounceTimeout={600}
         value={search}
         onChange={handleOnChange}
@@ -132,6 +153,7 @@ const Search = ({ onSearchChange }) => {
     </div>
   );
 };
+
 Search.propTypes = {
   onSearchChange: PropTypes.func.isRequired,
 };

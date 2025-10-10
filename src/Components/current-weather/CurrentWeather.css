@@ -1,12 +1,44 @@
 .current-weather {
   max-width: 300px;
-  border-radius: 15px;
-  box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
+  border-radius: 25px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   color: #fff;
-  background-color: #333;
+  /* --- NIMBUS THEME UPDATE: Cooler Blue/Slate Gradient --- */
+  background: linear-gradient(135deg, rgba(60, 80, 110, 0.9) 0%, rgba(40, 60, 90, 0.9) 100%);
+  /* --- END UPDATE --- */
   margin: 1rem auto;
   padding: 0 1rem 1.25rem 1rem;
   box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.current-weather::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.current-weather:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 25px 70px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .details {

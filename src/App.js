@@ -1,7 +1,7 @@
 import "./App.css";
 import Search from "./Components/search/Search";
 import CurrentWeather from "./Components/current-weather/CurrentWeather";
-import Forecast from './Components/Forecast/forecast';
+import Forecast from "./Components/Forecast/forecast";
 import { weatherAPIURL, weatherAPIKey } from "./APIs/SearchAPI";
 import { useState } from "react";
 
@@ -31,14 +31,13 @@ function App() {
       .catch((error) => console.error("Error fetching data:", error));
   };
 
-  console.log(currentWeather);
-  console.log(forecast);
-
   return (
-    <div className="container">
-      <Search onSearchChange={handleOnSearchChange} />
-      {currentWeather && <CurrentWeather data={currentWeather} />}
-      {forecast && <Forecast data={forecast} />}
+    <div className="app-wrapper">
+      <div className="container">
+        <Search onSearchChange={handleOnSearchChange} />
+        {currentWeather && <CurrentWeather data={currentWeather} />}
+        {forecast && <Forecast data={forecast} />}
+      </div>
     </div>
   );
 }

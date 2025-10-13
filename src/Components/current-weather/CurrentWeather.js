@@ -1,9 +1,11 @@
 import "./CurrentWeather.css";
 import PropTypes from "prop-types";
 
-const CurrentWeather = ({ data }) => {
+const CurrentWeather = ({ data, tempUnit }) => {
   const { name, weather, main, wind } = data;
   const { description, icon } = weather[0];
+  const unitSymbol = tempUnit === "imperial" ? "°F" : "°C";
+  const windUnit = tempUnit === "imperial" ? "mph" : "m/s";
 
   return (
     <div className="current-weather">
@@ -18,22 +20,26 @@ const CurrentWeather = ({ data }) => {
           src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         />
       </div>
-
       <div className="card-bottom">
-        <p className="temperature">{Math.round(main.temp)}°F</p>
-
+        <p className="temperature">
+          {Math.round(main.temp)}
+          {unitSymbol}
+        </p>
         <div className="details-container">
           <span className="details-header">Details</span>
           <div className="details-grid">
             <div className="parameter-row">
               <span className="parameter-label">Feels like</span>
               <span className="parameter-value">
-                {Math.round(main.feels_like)}°F
+                {Math.round(main.feels_like)}
+                {unitSymbol}
               </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Wind</span>
-              <span className="parameter-value">{wind.speed} mph</span>
+              <span className="parameter-value">
+                {wind.speed} {windUnit}
+              </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Humidity</span>
@@ -69,6 +75,7 @@ CurrentWeather.propTypes = {
       speed: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 export default CurrentWeather;

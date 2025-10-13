@@ -18,11 +18,12 @@ const WeekDays = [
   "Sunday",
 ];
 
-const Forecast = ({ data }) => {
+const Forecast = ({ data, tempUnit }) => {
   const getDayName = new Date().getDay();
   const forecastDays = WeekDays.slice(getDayName, WeekDays.length).concat(
     WeekDays.slice(0, getDayName)
   );
+  const unitSymbol = tempUnit === "imperial" ? "°F" : "°C";
 
   return (
     <div className="forecast">
@@ -44,8 +45,10 @@ const Forecast = ({ data }) => {
                       {item.weather[0].description}
                     </span>
                     <span className="minMaxTemp">
-                      {Math.round(item.main.temp_min)}°F /{" "}
-                      {Math.round(item.main.temp_max)}°F{" "}
+                      {Math.round(item.main.temp_min)}
+                      {unitSymbol}
+                      {Math.round(item.main.temp_max)}
+                      {unitSymbol}
                       <span className="chevron">∨</span>
                     </span>
                   </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { fetchCityOptions } from "../../APIs/SearchAPI.js";
-import { FaSearch} from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { components } from "react-select";
 import PropTypes from "prop-types";
 import "./search.css";
@@ -10,11 +10,7 @@ const CustomDropdownIndicator = (props) => {
   const iconColor = props.isFocused ? "#ffffff" : "rgba(255, 255, 255, 0.9)";
   return (
     <components.DropdownIndicator {...props}>
-      <FaSearch
-        style={{ marginRight: "6px" }}
-        size={18}
-        color={iconColor}
-      />
+      <FaSearch style={{ marginRight: "6px" }} size={18} color={iconColor} />
     </components.DropdownIndicator>
   );
 };
@@ -143,7 +139,7 @@ const Search = ({ onSearchChange }) => {
       <AsyncPaginate
         styles={customStyles}
         classNamePrefix="searchbar"
-        placeholder="Search City for Nimbus Weather"
+        placeholder="Search City"
         debounceTimeout={600}
         value={search}
         onChange={handleOnChange}

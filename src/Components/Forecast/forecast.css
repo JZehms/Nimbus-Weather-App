@@ -14,7 +14,11 @@
   align-items: center;
   cursor: pointer;
   padding: 1rem;
-  background: linear-gradient(135deg, rgba(170, 190, 210, 0.4) 0%, rgba(140, 160, 180, 0.4) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(170, 190, 210, 0.4) 0%,
+    rgba(140, 160, 180, 0.4) 100%
+  );
   margin: 0.5rem 0.5rem 0 0.5rem;
   border-radius: 20px 20px 0 0;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
@@ -49,7 +53,11 @@
 }
 
 .daily-item:hover {
-  background: linear-gradient(135deg, rgba(100, 120, 150, 0.7) 0%, rgba(80, 100, 130, 0.7) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(100, 120, 150, 0.7) 0%,
+    rgba(80, 100, 130, 0.7) 100%
+  );
   transform: translateY(-4px) scale(1.01);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -98,7 +106,8 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: none;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3))
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
   letter-spacing: 2px;
 }
 

@@ -1,15 +1,17 @@
 import "./CurrentWeather.css";
 import PropTypes from "prop-types";
 
-const CurrentWeather = ({ data }) => {
-  const { name, weather, main, wind } = data;
+const CurrentWeather = ({ data, tempUnit }) => {
+  const { city, weather, main, wind } = data;
   const { description, icon } = weather[0];
+  const unitSymbol = tempUnit === "imperial" ? "°F" : "°C";
+  const windUnit = tempUnit === "imperial" ? "mph" : "m/s";
 
   return (
     <div className="current-weather">
       <div className="card-top">
         <div className="location-info">
-          <p className="city">{name}</p>
+          <p className="city">{city}</p>
           <p className="weather-description">{description}</p>
         </div>
         <img
@@ -18,22 +20,26 @@ const CurrentWeather = ({ data }) => {
           src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         />
       </div>
-
       <div className="card-bottom">
-        <p className="temperature">{Math.round(main.temp)}°F</p>
-
+        <p className="temperature">
+          {Math.round(main.temp)}
+          {unitSymbol}
+        </p>
         <div className="details-container">
           <span className="details-header">Details</span>
           <div className="details-grid">
             <div className="parameter-row">
               <span className="parameter-label">Feels like</span>
               <span className="parameter-value">
-                {Math.round(main.feels_like)}°F
+                {Math.round(main.feels_like)}
+                {unitSymbol}
               </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Wind</span>
-              <span className="parameter-value">{wind.speed} mph</span>
+              <span className="parameter-value">
+                {wind.speed} {windUnit}
+              </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Humidity</span>
@@ -52,7 +58,7 @@ const CurrentWeather = ({ data }) => {
 
 CurrentWeather.propTypes = {
   data: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
     weather: PropTypes.arrayOf(
       PropTypes.shape({
         description: PropTypes.string.isRequired,
@@ -69,6 +75,7 @@ CurrentWeather.propTypes = {
       speed: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 export default CurrentWeather;

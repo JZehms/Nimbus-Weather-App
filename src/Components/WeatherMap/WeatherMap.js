@@ -88,7 +88,7 @@ function WeatherMap({ lat, lon, cityName, apiKey }) {
         </select>
 
         <div style={{ marginTop: "8px", fontSize: "11px", color: "#666" }}>
-          {weatherLayer !== "none" ? `Active: ${weatherLayer}` : "No overlay"}
+          {weatherLayer === "none" ? "No overlay" : `Active: ${weatherLayer}`}
         </div>
       </div>
 

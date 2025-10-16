@@ -4,7 +4,7 @@ import Search from "./Components/search/Search";
 import CurrentWeather from "./Components/current-weather/CurrentWeather";
 import Forecast from "./Components/Forecast/forecast";
 import { weatherAPIURL, weatherAPIKey } from "./APIs/SearchAPI";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import WeatherMap from "./Components/WeatherMap/WeatherMap";
 
 function App() {
@@ -15,15 +15,15 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [tempUnit, setTempUnit] = useState("imperial");
 
-  const fetchWeatherData = (lat, lon, cityName) => {
+  const fetchWeatherData = (lat, lon, cityName, unit = tempUnit) => {
     setMapCoords({ lat: parseFloat(lat), lon: parseFloat(lon) });
 
     const currentWeatherFetch = fetch(
-      `${weatherAPIURL}?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}&units=${tempUnit}`
+      `${weatherAPIURL}?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}&units=${unit}`
     );
 
     const forecastFetch = fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}&units=${tempUnit}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}&units=${unit}`
     );
 
     Promise.all([currentWeatherFetch, forecastFetch])
@@ -31,38 +31,12 @@ function App() {
         const weatherData = await weatherResponse.json();
         const forecastData = await forecastResponse.json();
 
-        setCurrentWeather({ city: cityName, ...weatherData });
-        setForecast({ city: cityName, ...forecastData });
+        setCurrentWeather({ ...weatherData, city: cityName });
+        setForecast({ ...forecastData, city: cityName });
         setHasSearched(true);
       })
       .catch((error) => console.error("Error fetching data:", error));
   };
-
-  useEffect(() => {
-    if (hasSearched && currentWeather) {
-      const lat = mapCoords.lat;
-      const lon = mapCoords.lon;
-      const cityName = currentWeather.city;
-
-      const currentWeatherFetch = fetch(
-        `${weatherAPIURL}?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}&units=${tempUnit}`
-      );
-
-      const forecastFetch = fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherAPIKey}&units=${tempUnit}`
-      );
-
-      Promise.all([currentWeatherFetch, forecastFetch])
-        .then(async ([weatherResponse, forecastResponse]) => {
-          const weatherData = await weatherResponse.json();
-          const forecastData = await forecastResponse.json();
-
-          setCurrentWeather({ city: cityName, ...weatherData });
-          setForecast({ city: cityName, ...forecastData });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    }
-  }, [tempUnit, hasSearched, currentWeather, mapCoords.lat, mapCoords.lon]);
 
   const handleUseMyLocation = () => {
     if ("geolocation" in navigator) {
@@ -93,7 +67,17 @@ function App() {
   };
 
   const toggleTempUnit = () => {
-    setTempUnit(tempUnit === "imperial" ? "metric" : "imperial");
+    const newUnit = tempUnit === "imperial" ? "metric" : "imperial";
+    setTempUnit(newUnit);
+
+    // Refetch with new unit if I have current weather
+    if (hasSearched && currentWeather) {
+      const lat = mapCoords.lat;
+      const lon = mapCoords.lon;
+      const cityName = currentWeather.city;
+
+      fetchWeatherData(lat, lon, cityName, newUnit);
+    }
   };
 
   return (

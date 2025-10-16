@@ -2,7 +2,7 @@ import "./CurrentWeather.css";
 import PropTypes from "prop-types";
 
 const CurrentWeather = ({ data, tempUnit }) => {
-  const { name, weather, main, wind } = data;
+  const { city, weather, main, wind } = data;
   const { description, icon } = weather[0];
   const unitSymbol = tempUnit === "imperial" ? "°F" : "°C";
   const windUnit = tempUnit === "imperial" ? "mph" : "m/s";
@@ -11,7 +11,7 @@ const CurrentWeather = ({ data, tempUnit }) => {
     <div className="current-weather">
       <div className="card-top">
         <div className="location-info">
-          <p className="city">{name}</p>
+          <p className="city">{city}</p>
           <p className="weather-description">{description}</p>
         </div>
         <img
@@ -58,7 +58,7 @@ const CurrentWeather = ({ data, tempUnit }) => {
 
 CurrentWeather.propTypes = {
   data: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
     weather: PropTypes.arrayOf(
       PropTypes.shape({
         description: PropTypes.string.isRequired,
